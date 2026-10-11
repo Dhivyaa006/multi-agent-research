@@ -9,6 +9,12 @@ from .config import get_settings
 settings = get_settings()
 
 
+def output_limit(llm, tokens: int) -> dict:
+    """The keyword that caps a reply's length for this provider: Ollama calls it num_predict, Groq max_tokens.
+    Binding max_tokens onto an Ollama model raised a TypeError on every attempt, so the local run never got past the content synthesizer."""
+    return {"num_predict": tokens} if isinstance(llm, OllamaLLM) else {"max_tokens": tokens}
+
+
 class LLMManager:
     """Manages LLM instances with fallback logic."""
 

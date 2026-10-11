@@ -6,6 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from .base import BaseAgent
 from .state import MarketResearchState
 from ..core.tokens import truncate_to_token_limit
+from ..core.llm import output_limit
 
 
 # Token budget.
@@ -176,7 +177,7 @@ Create a comprehensive research report following the EXACT structure above.""")
             analysis=analysis_truncated
         )
         summary_response = await self.llm.bind(
-            max_tokens=SUMMARY_MAX_TOKENS
+            **output_limit(self.llm, SUMMARY_MAX_TOKENS)
         ).ainvoke(summary_messages)
         executive_summary = summary_response.content if hasattr(summary_response, 'content') else str(summary_response)
 
@@ -211,7 +212,7 @@ Create a comprehensive research report following the EXACT structure above.""")
             analysis=analysis_for_report
         )
         report_response = await self.llm.bind(
-            max_tokens=REPORT_MAX_TOKENS
+            **output_limit(self.llm, REPORT_MAX_TOKENS)
         ).ainvoke(report_messages)
         final_report = report_response.content if hasattr(report_response, 'content') else str(report_response)
 
