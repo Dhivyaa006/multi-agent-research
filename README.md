@@ -168,7 +168,7 @@ NEXT_PUBLIC_WS_URL=ws://localhost:8000
 
 ## Behaviour worth knowing
 
-- **Search cache.** Search results are cached for one hour (`CACHE_TTL`), in Redis when `REDIS_URL` is set and in memory otherwise. The deployed API currently reports `"cache_type": "in-memory"` at `/api/cache/stats`, so the demo is not using Redis right now.
+- **Search cache.** Search results are cached for one hour (`CACHE_TTL`), in Redis when `REDIS_URL` is set and in memory otherwise. While the hosted copy was running, its API reported `"cache_type": "in-memory"` at `/api/cache/stats`, so it was not using Redis; the hosted copy is offline now.
 - **Rate limit.** `/api/research` allows 5 requests per minute per IP, which protects the Tavily and Groq quotas.
 - **Retries.** Each agent makes up to 5 attempts. When the default model is rate limited, the agent moves to the next model in `FALLBACK_LLM_MODELS`. Once that list is used up, or for any other error, it waits before retrying: as long as Groq says when it says (capped at 30 seconds), otherwise 1, 2, 4 and 8 seconds.
 - **Token counting.** tiktoken counts tokens for the cost tracking and for truncating prompts to fit the model's per-minute budget.
