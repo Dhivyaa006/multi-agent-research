@@ -1,5 +1,9 @@
 # Multi-Agent Market Research Platform
 
+![A research run: seven agents work through their stages, the fact checker pauses for a human decision, and the report with charts appears](docs/demo.gif)
+
+*A full run in the app: agents work in stages, the fact checker pauses for a human decision, then the report and charts appear (recorded locally with a stand-in model and canned search results, so the chart values are illustrative).*
+
 Seven LangGraph agents that research a set of companies, fact-check the findings, and write a comparison report with charts.
 
 **Demo:** The hosted copy is offline: the free-tier host suspended its services in October 2026, so the links that used to be here led to empty pages and were removed. Everything runs locally from the steps below. A full run takes a few minutes, and it was built for free tiers (Groq, Tavily), so a run can hit Groq's free-tier limits and slow down or fail.
