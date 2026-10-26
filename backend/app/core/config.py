@@ -67,9 +67,10 @@ class Settings(BaseSettings):
     def cors_origins(self) -> list[str]:
         """Get CORS origins from environment and defaults."""
         base_origins = [
-            "http://localhost:3000",
-            "http://localhost:3001",
-        ]
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://multi-agent-research-ildg-p9v3s88e0-dhivyaalakshmid-5960.vercel.app",
+]
         # Add production origins from environment variable
         if self.cors_origins_env:
             additional = [origin.strip() for origin in self.cors_origins_env.split(",")]
