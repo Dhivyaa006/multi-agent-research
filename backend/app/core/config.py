@@ -71,6 +71,7 @@ class Settings(BaseSettings):
     "http://localhost:3001",
     "https://multi-agent-research-ildg-p9v3s88e0-dhivyaalakshmid-5960.vercel.app",
     "https://multi-agent-research-ildg-6mfntxaoh-dhivyaalakshmid-5960.vercel.app",
+    "https://multi-agent-research-ildg.vercel.app",
 ]
         # Add production origins from environment variable
         if self.cors_origins_env:
